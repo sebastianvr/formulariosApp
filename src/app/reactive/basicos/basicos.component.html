@@ -1,0 +1,111 @@
+<h2>Reactive Basicos</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <!-- para hacer a referencia a este formulario uso #miFormulario enviando la imformacion al ngSubmit -->
+        <form autocomplete="off" [formGroup]="miFormulario">
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+                <label 
+                    for="productos" 
+                    class="col-sm-3 col-form-label">
+                    Productos:</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="text" 
+                        id="productos" 
+                        class="form-control"
+                        placeholder="Nombre del producto"
+                        formControlName="nombre">
+                        
+                        
+                        <span 
+                            *ngIf="campoNoEsValido('nombre')"
+                            class="form-text text-danger">
+                            Debe de ser de tres letras
+                        </span>
+
+                </div>
+            </div>
+
+            <div class="mb-3 row" >
+                <label 
+                    for="precio" 
+                    class="col-sm-3 col-form-label">
+                    Precio:</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="number" 
+                        id="precio" 
+                        placeholder="Precio del producto"
+                        class="form-control"
+                        formControlName="precio">
+
+                    <span 
+                    *ngIf="campoNoEsValido('precio')"
+                        class="form-text text-danger">
+                        El precio debe ser mayor que 0
+                    </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label 
+                    for="existencias" 
+                    class="col-sm-3 col-form-label">
+                    Existencias:</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="number" 
+                        id="existencias"
+                        placeholder="Existencias del producto"
+                        class="form-control"
+                        formControlName="existencias">
+
+                        <span 
+                        *ngIf="campoNoEsValido('existencias')"
+                            class="form-text text-danger">
+                            El precio debe ser mayor que 0
+                        </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- float-end : desplaza el boton al extremo derecho -->
+                    <button 
+                        class="btn btn-primary float-end"
+                        [disabled]="miFormulario.invalid"
+                        type="submit">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{ miFormulario.valid}} </pre>
+        
+         <!-- Pristine : significa que no se han cambiado los valores con los cuales se presento el formulario -->
+        <span>Pristine</span>
+        <pre>{{ miFormulario.pristine}} </pre>
+
+        <!-- Touch: si el formulario ha sido tocado, aunque no haya hecho ningun cambio -->
+        <span>Touch</span>
+        <pre>{{ miFormulario.touched}} </pre>
+        
+        <span>value</span>
+        <pre>{{ miFormulario.value | json}} </pre>
+
+        <span>Errores en el Precio</span>
+        <pre>{{ miFormulario.controls.precio.errors | json}} </pre>
+        
+    </div>
+</div> 
+

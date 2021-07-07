@@ -1,0 +1,94 @@
+<h2>Reactive : Switches</h2>
+
+
+<form>
+
+    <div class="row mb-3" >
+        <label class="col-sm-3 col-form-label"> Género</label>
+        <div class="col-sm-9">
+
+            <!-- Radios -->
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="radioGenero"
+                    value="M"
+                    id="radioMasculino">
+                <label class="form-check-label" for="radioMasculino">
+                    Masculino
+                </label>
+            </div>
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="radioGenero" 
+                    value="F"
+                    id="radioFemenino">
+                <label class="form-check-label" for="radioFemenino">
+                    Femenino
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-3" >
+        <label class="col-sm-3 col-form-label">Notificaciones</label>
+        <div class="col-sm-9">
+
+            <!-- Switch -->
+            <div class="form-check form-switch mt-2">
+                <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="flexSwitchCheckChecked">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
+            </div>
+        
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">CheckBox</label>
+        <div class="col-sm-9">
+
+            <!-- Checkbox -->
+            <div class="form-check mt-2">
+                <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Acepto terminos y condiciones
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button 
+                type="button" 
+                class="btn btn-primary float-end">Guardar</button>
+        </div>
+    </div>
+</form>
+
+
+<!-- <h5>Valor del formulario</h5>
+
+<pre>{{miFormulario.value | json}}</pre>
+<br>
+
+<h5>Valor de persona</h5>
+
+<pre>{{persona | json}}</pre>
+<br>
+
+<h5>Formulario valido?</h5>
+
+<pre>{{miFormulario.valid}}</pre>
+<br> -->
+
