@@ -1,0 +1,138 @@
+<h2>Registro</h2>
+<hr>
+
+<div class="row ">
+    <div class="col">
+
+        <form (ngSubmit)="enviarFormulario()" [formGroup]="miFormulario" autocomplete="off">
+
+            <!-- Nombre -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="text"
+                        class="form-control"
+                        formControlName="nombre"
+                        placeholder="Nombre del usuario">
+
+                    <span 
+                        *ngIf="esCampoValido('nombre')"
+                        class="form-text text-danger">
+                        Debe ser en formato nombre y apellido
+                    </span>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="email"
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="Email del usuario">
+                    <span 
+                        *ngIf="esCampoValido('email')"
+                        class="form-text text-danger">
+                        Email inválido
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Username -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="text"
+                        class="form-control"
+                        formControlName="username"
+                        placeholder="Nombre codigo del usuario">
+
+                    <span 
+                        *ngIf="esCampoValido('username')"
+                        class="form-text text-danger">
+                        Username es obligatorio y no puede ser Strider
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Contraseña -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Pasword</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="password"
+                        class="form-control"
+                        placeholder="Contraseña del usuario"
+                        formControlName="password"
+                        autocomplete="on">
+
+                    <span 
+                        *ngIf="esCampoValido('password')"
+                        class="form-text text-danger">
+                        La contraseña debe ser minimo 6 caracteres
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Contraseña2 -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Confirmar</label>
+                <div class="col-sm-9">
+                    <input 
+                        type="password"
+                        class="form-control"
+                        autocomplete="on"
+                        formControlName="password2"
+                        placeholder="Confirmar constraseña">
+                    
+                    <span 
+                        *ngIf="esCampoValido('password2')"
+                        class="form-text text-danger">
+                        Las contraseñas deben ser iguales
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button 
+                        type="submit"
+                        class="btn btn-primary float-end">
+                        Enviar</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+<h3>Formulario valid :  {{miFormulario.valid}}</h3>
+
+<!-- Los formularios reactivos pueden establecer errores a nivel global del formulario -->
+<h3>Formulario errors :  {{miFormulario.errors | json}}</h3>
+
+<!-- <h3>Errores nombre</h3>
+<pre>{{miFormulario.controls.nombre.errors | json}}</pre> -->
+
+<h3>Errores email</h3>
+<pre>{{miFormulario.controls.email.errors | json}}</pre> 
+
+<!-- <h3>Errores username</h3>
+<pre>{{miFormulario.controls.username.errors | json}}</pre>
+
+<h3>Errores password</h3>
+<pre>{{miFormulario.controls.password.errors | json}}</pre>
+
+<h3>Errores password2</h3>
+<pre>{{miFormulario.controls.password2.errors | json}}</pre> -->
+

@@ -5,7 +5,7 @@
     <div class="col">
 
         <!-- para hacer a referencia a este formulario uso #miFormulario enviando la imformacion al ngSubmit -->
-        <form autocomplete="off" [formGroup]="miFormulario">
+        <form  (ngSubmit)="guardar()"   autocomplete="off" [formGroup]="miFormulario">
             <!-- Campo de producto -->
             <div class="mb-3 row">
                 <label 
@@ -77,7 +77,6 @@
                     <!-- float-end : desplaza el boton al extremo derecho -->
                     <button 
                         class="btn btn-primary float-end"
-                        [disabled]="miFormulario.invalid"
                         type="submit">
                         Enviar
                     </button>
