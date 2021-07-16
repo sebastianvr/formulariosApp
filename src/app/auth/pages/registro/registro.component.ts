@@ -38,7 +38,7 @@ export class RegistroComponent implements OnInit {
     validator : [this.vs.camposIguales('password', 'password2')]
   })
 
-  get emailMsjError():string{
+  get ©():string{
     const errors = this.miFormulario.get('email')?.errors;
     if(errors?.required){
       return 'Email es obligatorio'
