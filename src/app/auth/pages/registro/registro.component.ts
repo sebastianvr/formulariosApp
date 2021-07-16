@@ -14,28 +14,42 @@ export class RegistroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private vs: ValidatorService,
-    private eValidators: EmailValidatorService
+    private ev: EmailValidatorService
   ) { }
 
   ngOnInit(): void {
     this.miFormulario.reset({
       nombre: 'Sebastian vidal',
       email: 'test1@test.com',
-      username: 'sebastianvr'
+      username: 'sebastianvr',
+      password: '123456',
+      password2: '123456'
     });
   }
 
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(this.vs.nombreYApellidoPattern)]],
-    email: ['', [Validators.required, Validators.pattern(this.vs.emailPattern)], [this.eValidators]],
+    email: ['', [Validators.required, Validators.pattern(this.vs.emailPattern)],[this.ev]],
     username: ['', [Validators.required, this.vs.noPuedeSerStrider]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    password2: ['', [Validators.required,]],
+    password2: ['', [Validators.required,]], 
   },
-    {
-      validator: [this.vs.camposIguales('password', 'password2')]
-    })
+  {
+    validator : [this.vs.camposIguales('password', 'password2')]
+  })
 
+  get emailMsjError():string{
+    const errors = this.miFormulario.get('email')?.errors;
+    if(errors?.required){
+      return 'Email es obligatorio'
+    }else if (errors?.pattern){
+      return 'Debe tener formato de tipo email'
+    }else if (errors?.emailExiste){
+      return 'Este email ya existe en la BD'
+    }
+
+    return '';
+  }
 
   enviarFormulario() {
     console.log(this.miFormulario.value)

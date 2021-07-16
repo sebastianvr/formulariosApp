@@ -36,7 +36,7 @@
                     <span 
                         *ngIf="esCampoValido('email')"
                         class="form-text text-danger">
-                        Email inválido
+                        {{emailMsjError}}
                     </span>
                 </div>
 
@@ -117,6 +117,7 @@
 
 
 <h3>Formulario valid :  {{miFormulario.valid}}</h3>
+<h3>Formulario status :  {{miFormulario.status}}</h3>
 
 <!-- Los formularios reactivos pueden establecer errores a nivel global del formulario -->
 <h3>Formulario errors :  {{miFormulario.errors | json}}</h3>
